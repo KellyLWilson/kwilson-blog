@@ -1,26 +1,74 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
+import Home from './home.js';
+import Projects from './projects.js';
+import Blog from './blog.js'
+import BlogPosts from './blogposts.js';
 
-function App() {
+import {
+  BrowserRouter as Router,
+  useHistory,
+  useParams,
+  useRouteMatch,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+export default function App() {
+ 
+  const [posts, setPosts] = useState([]);
+  const [blogPage, setBlogPage] = useState("");
+  const [blogQAPage, setBlogQAPage] = useState("")
+
+  useEffect(() => {
+
+     axios.get('http://127.0.0.1:8000/api/blog_posts')
+       .then(response => setPosts(response.data.data))
+       .catch(error => console.log(error))
+       console.log(posts)
+       
+
+   }, []);
+
+   
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+    <>
+      <Router>
+        <div>
+          <ul>
+            <li className="black">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="black">
+              <Link to="/Projects">Projects</Link>
+            </li>
+            <li className="black">
+              <Link to="/Blog">Blog Posts</Link>
+            </li>
+          </ul>
+
+        
+
+
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/Projects">
+              <Projects />
+            </Route>
+            <Route path="/Blog">
+              <Blog setBlogPage={setBlogPage} posts={posts} />
+            </Route>
+            <Route path="/BlogPosts">
+              <BlogPosts setBlogQAPage={setBlogPage} posts={posts} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </>
+  )
+}
