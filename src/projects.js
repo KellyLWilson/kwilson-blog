@@ -12,6 +12,7 @@ export default function Home() {
         <div className="col"></div>
         <div className="col"><h1>Projects</h1>
             <h4>Link to Projects Coming soon.....</h4></div>
+            
         <div className="col">
         
         </div>
