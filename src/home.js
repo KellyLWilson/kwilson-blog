@@ -13,6 +13,7 @@ export default function Home() {
         <div className="col"></div>
         <div className="col">
         <h1>Kelly L Wilson</h1>
+        <h2>Welcome to My Blog</h2>
         </div>
         </div>
         <div className="Row">
