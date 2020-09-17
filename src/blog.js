@@ -11,7 +11,7 @@ export default function Blog(props) {
     return (
 
             <div className="container-fluid">
-               <h5 className="text-center">Blog Posts</h5>
+               <h5 className="text-center">Boot Camp Blog Posts</h5>
                <h6 className="text-center">Please Click on Week to see Post Q&A</h6>
         
               <table key='id' className="table">

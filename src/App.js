@@ -4,6 +4,7 @@ import Home from './home.js';
 import Projects from './projects.js';
 import Blog from './blog.js'
 import BlogPosts from './blogposts.js';
+import Postblog from './Postblog.js';
 
 import {
   BrowserRouter as Router,
@@ -48,6 +49,9 @@ export default function App() {
             <li className="black">
               <Link to="/Blog">Blog Posts</Link>
             </li>
+            <li className="black">
+              <Link to="/Postblog">Thoughts After Boot Camp</Link>
+            </li>
           </ul>
 
         
@@ -65,6 +69,9 @@ export default function App() {
             </Route>
             <Route path="/BlogPosts">
               <BlogPosts setBlogQAPage={setBlogPage} posts={posts} />
+            </Route>
+            <Route path="/PostBlog">
+            <Postblog setBlogPage={setBlogPage} posts={posts} />
             </Route>
           </Switch>
         </div>
